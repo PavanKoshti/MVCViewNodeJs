@@ -309,7 +309,7 @@ module.exports = {
 
 
 
-            res.render('dashboard', { users: userData, totalPages: Math.ceil(userCount / limit), currentPage: page }).exec();
+            res.render('dashboard', { users: userData, totalPages: Math.ceil(userCount / limit), currentPage: page });
         } catch (error) {
             console.log("Error While Load Admin Dashboard View --> ", error);
         }
