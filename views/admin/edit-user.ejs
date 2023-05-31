@@ -1,0 +1,34 @@
+<% include('../layouts/header.ejs') %>
+
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
+    <h1>Welcome, <span style="color: red;">
+            <%= fuser.name %>
+        </span> For Update Profile</h1>
+
+    <form action="" method="post">
+        <input type="text" name="name" value="<%= fuser.name %>" placeholder="Enter Name" required>
+        <br><br>
+        <input type="email" name="email" value="<%= fuser.email %>" placeholder="Enter Email" required>
+        <br><br>
+        <input type="text" name="mobile" value="<%= fuser.mobile %>" placeholder="Enter Mobile" minlength="10"
+            maxlength="10" required>
+        <br><br>
+        <label>Verified</label>
+        <input type="radio" name="verify" value="1" <% if(fuser.is_varified==1){ %> checked <% } %>>
+            <label>Un Verified</label>
+            <input type="radio" name="verify" value="0" <% if(fuser.is_varified==0){ %> checked <% } %> >
+                <br><br>
+                <input type="submit" value="Update User">
+    </form>
+
+    <br><br>
+
+    <button><a href="/admin/dashboard">Go Back</a></button>
+
+    <% include('../layouts/footer.ejs') %>

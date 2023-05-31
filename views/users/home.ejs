@@ -1,0 +1,58 @@
+<% include('../layouts/header.ejs') %>
+
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
+    <h2>Welcome User, <%= user.name %>
+    </h2>
+    <br>
+
+    <table style="border: 1px solid black;width: 100%;">
+
+        <tr>
+            <td>User Image</td>
+            <td>User Name</td>
+            <td>User Email</td>
+            <td>User Mobile No</td>
+            <td>User Verified</td>
+            <td>User Created Date</td>
+            <td>Actions</td>
+        </tr>
+
+
+        <tr>
+            <td> <img src="userImages/<%= user.image %>" alt="<%= user.image %>" height="70px" width="70px"> </td>
+            <td>
+                <%= user.name %>
+            </td>
+            <td>
+                <%= user.email %>
+            </td>
+            <td>
+                <%= user.mobile %>
+            </td>
+            <td>
+                <% if(user.is_varified==1) { %>
+                    Verified
+                    <% } %>
+            </td>
+            <td>
+                <%= user.createDate %>
+            </td>
+            <td>
+                <button>
+                    <a href="/edit?id=<%= user._id %>"> Edit </a>
+                </button>
+            </td>
+        </tr>
+
+    </table>
+
+    <br>
+    <button><a href="/logout">Logout</a></button>
+
+    <% include('../layouts/footer.ejs') %>

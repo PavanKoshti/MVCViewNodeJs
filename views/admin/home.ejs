@@ -1,0 +1,64 @@
+<% include('../layouts/header.ejs') %>
+
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+
+    <h2>Welcome Admin, <%= admin.name %>
+    </h2>
+    <br>
+
+    <button>
+        <a href="/admin/dashboard"> DashBoard </a>
+    </button>
+    <br><br>
+
+    <table style="border: 1px solid black;width: 100%;">
+
+        <tr>
+            <td>Admin Image</td>
+            <td>Admin Name</td>
+            <td>Admin Email</td>
+            <td>Admin Mobile No</td>
+            <td>Admin Verified</td>
+            <td>Admin Created Date</td>
+            <td>Actions</td>
+        </tr>
+
+
+        <tr>
+            <td> <img src="/userImages/<%= admin.image %>" alt="<%= admin.image %>" height="70px" width="70px">
+            </td>
+            <td>
+                <%= admin.name %>
+            </td>
+            <td>
+                <%= admin.email %>
+            </td>
+            <td>
+                <%= admin.mobile %>
+            </td>
+            <td>
+                <% if(admin.is_varified==1) { %>
+                    Verified
+                    <% } %>
+            </td>
+            <td>
+                <%= admin.createDate %>
+            </td>
+            <td>
+                <button>
+                    <a href="/admin/edit?id=<%= admin._id %>"> Edit </a>
+                </button>
+            </td>
+        </tr>
+
+    </table>
+
+    <br>
+    <button><a href="/admin/logout">Logout</a></button>
+
+    <% include('../layouts/footer.ejs') %>
