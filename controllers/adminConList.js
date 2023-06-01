@@ -509,7 +509,7 @@ async function sendVerifyMail(name, email, id, type, password, token) {
                 from: process.env.USER,
                 to: email,
                 subject: 'For Verification Mail',
-                html: `<p> Hii Admin ${name} , Please Click Here to <a href="http://localhost:10000/admin/verify?id=${id}"> Verify </a> Your Mail.</p>`
+                html: `<p> Hii Admin ${name} , Please Click Here to <a href="https://pavanusermanagmentsystem.onrender.com//admin/verify?id=${id}"> Verify </a> Your Mail.</p>`
             }
         }
         else if (type == 'ResetMail') {
@@ -518,7 +518,7 @@ async function sendVerifyMail(name, email, id, type, password, token) {
                     from: process.env.USER,
                     to: email,
                     subject: 'For Reset Password',
-                    html: `<p> Hii Admin ${name} , Please Click Here to <a href="http://localhost:10000/admin/forget-password?token=${token}"> Reset </a> Your Password.</p>`
+                    html: `<p> Hii Admin ${name} , Please Click Here to <a href="https://pavanusermanagmentsystem.onrender.com//admin/forget-password?token=${token}"> Reset </a> Your Password.</p>`
                 }
             }
         }
@@ -528,7 +528,7 @@ async function sendVerifyMail(name, email, id, type, password, token) {
                     from: process.env.USER,
                     to: email,
                     subject: 'Admin Add You and Verify Your Mail',
-                    html: `<p> Hii ${name} , Please Click Here to <a href="http://localhost:10000/admin/verify?id=${id}"> Verify </a> Your Mail.</p> <br> <b>Email :- </b> ${email} <br> <b>Password :- </b> ${password} <br><br> Thank You ! :)`
+                    html: `<p> Hii ${name} , Please Click Here to <a href="https://pavanusermanagmentsystem.onrender.com//admin/verify?id=${id}"> Verify </a> Your Mail.</p> <br> <b>Email :- </b> ${email} <br> <b>Password :- </b> ${password} <br><br> Thank You ! :)`
                 }
             }
         }

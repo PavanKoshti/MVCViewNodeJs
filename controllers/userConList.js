@@ -279,7 +279,7 @@ async function sendVerifyMail(name, email, id, type, token) {
                 from: process.env.USER,
                 to: email,
                 subject: 'For Verification Mail',
-                html: `<p> Hii User ${name} , Please Click Here to <a href="http://localhost:10000/verify?id=${id}"> Verify </a> Your Mail.</p>`
+                html: `<p> Hii User ${name} , Please Click Here to <a href="https://pavanusermanagmentsystem.onrender.com//verify?id=${id}"> Verify </a> Your Mail.</p>`
             }
         }
         else {
@@ -287,7 +287,7 @@ async function sendVerifyMail(name, email, id, type, token) {
                 from: process.env.USER,
                 to: email,
                 subject: 'For Reset Password',
-                html: `<p> Hii User ${name} , Please Click Here to <a href="http://localhost:10000/forget-password?token=${token}"> Reset </a> Your Password.</p>`
+                html: `<p> Hii User ${name} , Please Click Here to <a href="https://pavanusermanagmentsystem.onrender.com//forget-password?token=${token}"> Reset </a> Your Password.</p>`
             }
         }
         transporter.sendMail(mailOptions, (err, info) => {
