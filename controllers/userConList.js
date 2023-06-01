@@ -93,11 +93,17 @@ module.exports = {
 
     loadUserHomeView: async function (req, res) {
         try {
-            let getUserData = await User.findById({ _id: req.session.user_id }).lean();
-            getUserData.createDate = new Date(getUserData.created).toLocaleDateString();
-            if (getUserData) {
-                res.render('home', { user: getUserData });
+            if (req.session.user_id != null || req.session.user_id != undefined || req.session.user_id != '') {
+                let getUserData = await User.findById({ _id: req.session.user_id }).lean();
+                getUserData.createDate = new Date(getUserData.created).toLocaleDateString();
+                if (getUserData) {
+                    res.render('home', { user: getUserData });
+                }
             }
+            else {
+                res.render('/login');
+            }
+
         } catch (error) {
             console.log("Error While Get Load User Home View --> ", error);
         }
@@ -273,7 +279,7 @@ async function sendVerifyMail(name, email, id, type, token) {
                 from: process.env.USER,
                 to: email,
                 subject: 'For Verification Mail',
-                html: `<p> Hii User ${name} , Please Click Here to <a href="http://localhost:3000/verify?id=${id}"> Verify </a> Your Mail.</p>`
+                html: `<p> Hii User ${name} , Please Click Here to <a href="http://localhost:10000/verify?id=${id}"> Verify </a> Your Mail.</p>`
             }
         }
         else {
@@ -281,7 +287,7 @@ async function sendVerifyMail(name, email, id, type, token) {
                 from: process.env.USER,
                 to: email,
                 subject: 'For Reset Password',
-                html: `<p> Hii User ${name} , Please Click Here to <a href="http://localhost:3000/forget-password?token=${token}"> Reset </a> Your Password.</p>`
+                html: `<p> Hii User ${name} , Please Click Here to <a href="http://localhost:10000/forget-password?token=${token}"> Reset </a> Your Password.</p>`
             }
         }
         transporter.sendMail(mailOptions, (err, info) => {
