@@ -283,9 +283,9 @@ module.exports = {
             }
             if (req.query.limit) {
                 limit = req.query.limit
-            } 
+            }
             else {
-                limit = 10;
+                limit = 5;
             }
 
 
@@ -454,12 +454,13 @@ module.exports = {
             }
             const filePathName = Path.resolve(__dirname, '../views/admin/htmltopdf.ejs');
             const htmlString = FS.readFileSync(filePathName).toString();
+            const ejsData = ejs.render(htmlString, data);
+
             let options = {
-                format: 'A3',
+                format: 'A4',
                 orientation: 'portrait',
                 border: "10mm"
             }
-            const ejsData = ejs.render(htmlString, data);
             PDF.create(ejsData, options).toFile('users.pdf', (err, responce) => {
                 if (err) {
                     console.log("Error While Generate PDF ", err);
